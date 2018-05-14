@@ -1,0 +1,13 @@
+app-text/asciidoc python_single_target_python2_7
+dev-libs/libxml2 python
+dev-util/nvidia-cuda-toolkit profiler
+sci-libs/hdf5 -threads
+sys-libs/zlib static-libs
+net-misc/networkmanager-pptp -gtk
+mail-client/thunderbird -crypt
+#app-crypt/pinentry gnome-keyring
+
+dev-qt/qtgui -gles2
+dev-qt/qtwidgets -gles2
+dev-qt/qtdeclarative -gles2
+dev-qt/qtwebkit -gles2
