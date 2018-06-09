@@ -5,7 +5,11 @@ sci-libs/hdf5 -threads
 sys-libs/zlib static-libs
 net-misc/networkmanager-pptp -gtk
 mail-client/thunderbird -crypt
+media-sound/spotify -systray
+media-sound/audacious -gtk
+media-plugins/audacious-plugins -gtk
 #app-crypt/pinentry gnome-keyring
+media-libs/gst-plugins-bad -gles2
 
 dev-qt/qtgui -gles2
 dev-qt/qtwidgets -gles2
