@@ -170,6 +170,38 @@ bar {
         status_command i3status
 }
 
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Brightness controls
+bindsym XF86MonBrightnessUp exec sudo brightnessctl s 5%+ # increase screen brightness
+bindsym XF86MonBrightnessDown exec sudo brightnessctl s 5%- # decrease screen brightness
+#bindsym XF86KbdBrightnessUp exec sudo echo 1 > /sys/class/leds/asus\:\:kbd_backlight/brightness
+#bindsym XF86KbdBrightnessDown exec sudo echo 0 > /sys/class/leds/asus\:\:kbd_backlight/brightness
+#bindsym $mod+Control+Up exec sudo echo 1 > /sys/class/leds/asus\:\:kbd_backlight/brightness
+#bindsym $mod+Control+Down exec sudo echo 0 > /sys/class/leds/asus\:\:kbd_backlight/brightness
+
+# Touchpad controls
+# bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# scrot
+bindsym Print exec scrot $HOME/Obrazy/ScreenShoots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym $mod+Print exec scrot -u $HOME/Obrazy/ScreenShoots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym $mod+Shift+Print exec scrot -s $HOME/Obrazy/ScreenShoots/`date +%Y-%m-%d_%H:%M:%S`.png
+
+# gimp
+assign [class="Gimp"] gimp
+for_window [title="GIMP Startup"] move workspace gimp
+for_window [window_role="gimp-toolbox"] floating disable; layout stacking; move left; resize shrink right 31px or 31 ppt
+
 # gaps:
 for_window [class="^.*"] border pixel 0
 gaps inner 15
@@ -177,6 +209,9 @@ gaps outer 5
 smart_gaps on
 smart_borders on
 
+for_window [class="galculator"] floating enable
+for_window [class="Audacious"] floating enable
+
 # autostart:
 exec --no-startup-id dex -a
-
+exec --no-startup-id conky
