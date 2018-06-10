@@ -178,10 +178,8 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 # Brightness controls
 bindsym XF86MonBrightnessUp exec sudo brightnessctl s 5%+ # increase screen brightness
 bindsym XF86MonBrightnessDown exec sudo brightnessctl s 5%- # decrease screen brightness
-#bindsym XF86KbdBrightnessUp exec sudo echo 1 > /sys/class/leds/asus\:\:kbd_backlight/brightness
-#bindsym XF86KbdBrightnessDown exec sudo echo 0 > /sys/class/leds/asus\:\:kbd_backlight/brightness
-#bindsym $mod+Control+Up exec sudo echo 1 > /sys/class/leds/asus\:\:kbd_backlight/brightness
-#bindsym $mod+Control+Down exec sudo echo 0 > /sys/class/leds/asus\:\:kbd_backlight/brightness
+bindsym XF86KbdBrightnessUp exec sudo kbd_bright_up.sh
+bindsym XF86KbdBrightnessDown exec sudo kbd_bright_down.sh
 
 # Touchpad controls
 # bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
