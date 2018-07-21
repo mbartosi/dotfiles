@@ -215,4 +215,5 @@ for_window [class="Audacious"] floating enable
 
 # autostart:
 exec --no-startup-id dex -a
+exec --no-startup-id nm-applet
 #exec --no-startup-id conky
