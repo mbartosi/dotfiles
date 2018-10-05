@@ -1,0 +1,3 @@
+dev-libs/libxml2 python
+dev-util/nvidia-cuda-toolkit profiler
+sci-libs/hdf5 -threads

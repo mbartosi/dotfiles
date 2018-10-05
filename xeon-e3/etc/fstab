@@ -1,0 +1,33 @@
+# /etc/fstab: static file system information.
+#
+# noatime turns off atimes for increased performance (atimes normally aren't 
+# needed); notail increases performance of ReiserFS (at the expense of storage 
+# efficiency).  It's safe to drop the noatime options if you want and to 
+# switch between notail / tail freely.
+#
+# The root filesystem should have a pass number of either 0 or 1.
+# All other filesystems should have a pass number of 0 or greater than 1.
+#
+# See the manpage fstab(5) for more information.
+#
+
+# <fs>			<mountpoint>	<type>		<opts>		<dump/pass>
+
+# NOTE: If your BOOT partition is ReiserFS, add the notail option to opts.
+#
+# NOTE: Even though we list ext4 as the type here, it will work with ext2/ext3
+#       filesystems.  This just tells the kernel to use the ext4 driver.
+#
+# NOTE: You can use full paths to devices like /dev/sda3, but it is often
+#       more reliable to use filesystem labels or UUIDs. See your filesystem
+#       documentation for details on setting a label. To obtain the UUID, use
+#       the blkid(8) command.
+
+UUID=cad1f57f-e0af-4566-aeb1-0e1682193a3a	/			btrfs	rw,noatime,commit=120,ssd,space_cache								0 0
+UUID=ABE6-2D67					/boot			vfat	rw,noatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,utf8,errors=remount-ro	0 2
+UUID=071ca512-8f3a-4f9a-9110-297ed36fc6a1	/mnt/data		btrfs	rw,noatime,commit=120,compress=zstd,space_cache								0 0
+UUID=efd4fa60-db2f-49bf-83ad-9363e4e51db5	none			swap	defaults,pri=10												0 0
+UUID=eadf929c-c767-4d3f-9dcd-f30ad558f7e0	none			swap	defaults,pri=10												0 0
+
+tmpfs						/var/tmp/portage	tmpfs	size=11G,uid=portage,gid=portage,mode=775,noatime								0 0
+carbon.lan:/					/mnt/nfs		nfs		noauto,x-systemd.automount,timeo=14,vers=4,minorversion=0,x-systemd.idle-timeout=5min		0 0
