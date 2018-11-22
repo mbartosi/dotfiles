@@ -47,8 +47,8 @@ font-1 = "Wuncon Siji:pixelsize=18;1"
 font-2 = "Font Awesome 5 Free:pixelsize=18;1"
 
 modules-left = i3 cpu temperature memory filesystem
-modules-center = alsa
-modules-right = date powermenu
+modules-center =
+modules-right = wired-network date powermenu
 
 tray-position = right
 tray-padding = 3
@@ -193,42 +193,20 @@ label = %percentage%%
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = "MEM: "
+format-prefix = "RAM: "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.primary}
-label = %gb_used%
+label = %gb_used% of %gb_free%
 
-[module/wlan]
-type = internal/network
-interface = wlp4s0
-interval = 3.0
-
-format-connected = <ramp-signal> <label-connected>
-format-connected-underline = ${colors.primary}
-label-connected = %essid%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
-ramp-signal-0 = ""
-ramp-signal-1 = "."
-ramp-signal-2 = ".."
-ramp-signal-3 = "..."
-ramp-signal-4 = "...."
-ramp-signal-foreground = ${colors.foreground-alt}
-
-[module/eth]
+[module/wired-network]
 type = internal/network
 interface = enp2s0
-interval = 3.0
+interval = 2
 
 format-connected-underline = ${colors.primary}
-format-connected-prefix = " "
+format-connected-prefix = "Eth: "
 format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
+label-connected = %local_ip% at %linkspeed%
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
@@ -411,3 +389,7 @@ format-underline = ${colors.alert}
 label = "%output:0:30%"
 exec = .config/polybar/custom/updates.sh
 exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
+
+[module/pulseaudio]
+type = internal/pulseaudio
+sink = alsa_output.pci-0000_04_04.0.analog-stereo
