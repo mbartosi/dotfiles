@@ -1,0 +1,8 @@
+dev-libs/libxml2 python
+dev-util/nvidia-cuda-toolkit profiler
+sci-libs/hdf5 -threads
+x11-misc/lightdm -gtk
+sys-apps/memtest86+ -iso
+app-text/poppler qt5
+app-crypt/pinentry gnome-keyring
+#media-video/mpv -cuda
