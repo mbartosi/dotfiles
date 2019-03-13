@@ -1,0 +1,78 @@
+# Global properties
+# The top properties below are applied to every block, but can be overridden.
+# Each block command defaults to the script name to avoid boilerplate.
+command=~/.config/i3blocks/$BLOCK_NAME
+markup=none
+separator=false
+separator_block_width=30
+color=#FFFFFF
+
+#[caps]
+#interval=once
+#signal=11
+
+# [bandwidth]
+# interval=5
+
+# Volume indicator
+#[volume]
+#label=
+#interval=5
+#signal=10
+
+#[brightness]
+#label=
+#command=echo $(echo `xbacklight` / 1 | bc)%
+#interval=once
+#signal=12
+
+# [wifi]
+# instance=wlp5s0
+# interval=10
+# label=
+
+#[vpn]
+#instance=wlp5s0
+#interval=10
+#signal=13
+#label=
+
+# [iface]
+# interval=once
+# signal=13
+
+[iface]
+label=🖧
+#IFACE=wlan0
+#ADDRESS_FAMILY=inet6?
+color=#00FF00
+interval=10
+
+# CPU usage
+[load_average]
+interval=10
+label=
+
+[cpu_temp]
+label=🌡
+interval=5
+
+[memory]
+label=
+interval=10
+
+# Battery indicator
+#[battery]
+#interval=10
+
+#[nowplaying]
+#label=
+# command=ncmpcpp --current-song="{%30a - %30t}|{%40f}"
+# ~/.dotfiles/nowplaying.sh
+#interval=5
+#signal=9
+
+[time]
+label=
+command=date '+%H:%M %d.%m.%Y  '
+interval=10
