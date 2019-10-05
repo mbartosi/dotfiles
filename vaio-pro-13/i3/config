@@ -218,7 +218,7 @@ bar {
 #        status_command i3status
         position top
         status_command i3blocks
-#	i3bar_command i3bar -t
+#        i3bar_command i3bar -t
         font pango: Iosevka 12
         colors
         {
@@ -256,7 +256,15 @@ for_window [title="^Steam Keyboard$"] floating enable
 for_window [class="Galculator"] floating enable border normal
 for_window [class="Audacious"] floating enable
 
-floating_maximum_size 1280 x 960
+for_window [window_role="pop-up"] floating enable border normal
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+
+floating_minimum_size 100 x 80
+floating_maximum_size 1440 x 960
 
 # autostart:
 exec --no-startup-id xset +fp /home/marek/.fonts

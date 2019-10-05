@@ -1,0 +1,4 @@
+dev-util/nvidia-cuda-toolkit profiler
+x11-drivers/nvidia-drivers tools
+dev-libs/libxml2 python
+media-libs/lensfun python_single_target_python3_6
