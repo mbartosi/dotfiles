@@ -1,0 +1,15 @@
+*/* PYTHON_TARGETS: -* python3_9
+*/* PYTHON_SINGLE_TARGET: -* python3_9
+
+dev-python/setuptools PYTHON_TARGETS: python3_8
+dev-python/setuptools_scm PYTHON_TARGETS: python3_8
+dev-python/dbus-python PYTHON_TARGETS: python3_8
+dev-python/six PYTHON_TARGETS: python3_8
+x11-misc/dex PYTHON_TARGETS: python3_8
+app-text/gnome-doc-utils PYTHON_TARGETS: python3_8
+gnome-extra/gnome-integration-spotify PYTHON_TARGETS: python3_8
+dev-libs/libxml2 PYTHON_TARGETS: python3_8
+
+# PYTHON_TARGETS: python3_8
+# PYTHON_SINGLE_TARGET: -* python3_8
+# PYTHON_SINGLE_TARGET: -* python3_8

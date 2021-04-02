@@ -14,7 +14,7 @@ BTRFS_LOG_OUTPUT="stdout"
 # cross mount points or other subvolumes/snapshots. If you want to defragment
 # nested subvolumes, all have to be listed in this variable.
 # (Colon separated paths)
-BTRFS_DEFRAG_PATHS="/:/data"
+BTRFS_DEFRAG_PATHS=""
 
 ## Path:           System/File systems/btrfs
 ## Type:           string(none,daily,weekly,monthly)
@@ -22,7 +22,7 @@ BTRFS_DEFRAG_PATHS="/:/data"
 ## ServiceRestart: btrfsmaintenance-refresh
 #
 # Frequency of defrag.
-BTRFS_DEFRAG_PERIOD="monthly"
+BTRFS_DEFRAG_PERIOD="none"
 
 ## Path:        System/File systems/btrfs
 ## Type:        string
@@ -40,7 +40,7 @@ BTRFS_DEFRAG_MIN_SIZE="+1M"
 # (Colon separated paths)
 # The special word/mountpoint "auto" will evaluate all mounted btrfs
 # filesystems
-BTRFS_BALANCE_MOUNTPOINTS="/:/data"
+BTRFS_BALANCE_MOUNTPOINTS="/"
 
 ## Path:           System/File systems/btrfs
 ## Type:           string(none,daily,weekly,monthly)
@@ -48,22 +48,26 @@ BTRFS_BALANCE_MOUNTPOINTS="/:/data"
 ## ServiceRestart: btrfsmaintenance-refresh
 #
 # Frequency of periodic balance.
+#
+# The frequency may be specified using one of the listed values or
+# in the format documented in the "Calendar Events" section of systemd.time(7),
+# if available.
 BTRFS_BALANCE_PERIOD="weekly"
 
 ## Path:        System/File systems/btrfs
 ## Type:        string
-## Default:     "1 5 10 20 30 40 50"
+## Default:     "5 10"
 #
 # The usage percent for balancing data block groups.
 #
 # Note: default values should not disturb normal work but may not reclaim
 # enough block groups. If you observe that, add higher values but beware that
 # this will increase IO load on the system.
-BTRFS_BALANCE_DUSAGE="1 5 10 20 30 40 50"
+BTRFS_BALANCE_DUSAGE="5 10"
 
 ## Path:        System/File systems/btrfs
 ## Type:        string
-## Default:     "1 5 10 20 30"
+## Default:     "5"
 #
 # The usage percent for balancing metadata block groups. The values are also
 # used in case the filesystem has mixed blockgroups.
@@ -71,7 +75,7 @@ BTRFS_BALANCE_DUSAGE="1 5 10 20 30 40 50"
 # Note: default values should not disturb normal work but may not reclaim
 # enough block groups. If you observe that, add higher values but beware that
 # this will increase IO load on the system.
-BTRFS_BALANCE_MUSAGE="1 5 10 20 30"
+BTRFS_BALANCE_MUSAGE="5"
 
 ## Path:        System/File systems/btrfs
 ## Type:        string
@@ -81,7 +85,7 @@ BTRFS_BALANCE_MUSAGE="1 5 10 20 30"
 # (Colon separated paths)
 # The special word/mountpoint "auto" will evaluate all mounted btrfs
 # filesystems
-BTRFS_SCRUB_MOUNTPOINTS="/:/data"
+BTRFS_SCRUB_MOUNTPOINTS="/"
 
 ## Path:        System/File systems/btrfs
 ## Type:        string(none,weekly,monthly)
@@ -89,6 +93,10 @@ BTRFS_SCRUB_MOUNTPOINTS="/:/data"
 ## ServiceRestart: btrfsmaintenance-refresh
 #
 # Frequency of periodic scrub.
+#
+# The frequency may be specified using one of the listed values or
+# in the format documented in the "Calendar Events" section of systemd.time(7),
+# if available.
 BTRFS_SCRUB_PERIOD="monthly"
 
 ## Path:        System/File systems/btrfs
@@ -115,7 +123,11 @@ BTRFS_SCRUB_READ_ONLY="false"
 # Frequency of periodic trim. Off by default so it does not collide with
 # fstrim.timer . If you do not use the timer, turn it on here. The recommended
 # period is 'weekly'.
-BTRFS_TRIM_PERIOD="monthly"
+#
+# The frequency may be specified using one of the listed values or
+# in the format documented in the "Calendar Events" section of systemd.time(7),
+# if available.
+BTRFS_TRIM_PERIOD="none"
 
 ## Path:        System/File systems/btrfs
 ## Description: Configuration for periodic fstrim - mountpoints
@@ -126,4 +138,17 @@ BTRFS_TRIM_PERIOD="monthly"
 # (Colon separated paths)
 # The special word/mountpoint "auto" will evaluate all mounted btrfs
 # filesystems
-BTRFS_TRIM_MOUNTPOINTS="/:/data"
+BTRFS_TRIM_MOUNTPOINTS="/"
+
+## Path:	System/File systems/btrfs
+## Description:	Configuration to allow concurrent jobs
+## Type: 	boolean
+## Default:	"false"
+#
+# These maintenance tasks may compete for resources with each other, blocking
+# out other tasks from using the file systems.  This option will force
+# these jobs to run in FIFO order when scheduled at overlapping times.  This
+# may include tasks scheduled to run when a system resumes or boots when
+# the timer for these tasks(s) elapsed while the system was suspended
+# or powered off.
+BTRFS_ALLOW_CONCURRENCY="false"

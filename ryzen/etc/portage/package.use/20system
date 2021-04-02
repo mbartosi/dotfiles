@@ -1,0 +1,8 @@
+dev-ml/findlib -tk
+media-libs/mesa -opencl
+dev-libs/boost python
+net-wireless/gnuradio qt5
+app-text/poppler qt5
+
+#sys-libs/ncurses -gpm
+#x11-libs/libva -opengl

@@ -1,0 +1,44 @@
+From 81fb34411292feb1e0d4bb84f975ca2fcfd5b33b Mon Sep 17 00:00:00 2001
+From: Joakim Tjernlund <joakim.tjernlund@infinera.com>
+Date: Thu, 8 Oct 2020 17:00:16 +0200
+Subject: [PATCH] Unbreak av_malloc_max(0) API/ABI
+
+From https://bugs.chromium.org/p/chromium/issues/detail?id=1095962
+----------------------------
+This seems to be caused by the custom handling of "av_max_alloc(0)" in
+Chromium's ffmpeg fork to mean unlimited (added in [1]).
+
+Upstream ffmpeg doesn't treat 0 as a special value; versions before 4.3 seemingly worked
+because 32 was subtracted from max_alloc_size (set to 0 by Chromium) resulting in an
+integer underflow, making the effective limit be SIZE_MAX - 31.
+
+Now that the above underflow doesn't happen, the tab just crashes. The upstream change
+for no longer subtracting 32 from max_alloc_size was included in ffmpeg 4.3. [2]
+
+[1] https://chromium-review.googlesource.com/c/chromium/third_party/ffmpeg/+/73563
+[2] https://github.com/FFmpeg/FFmpeg/commit/731c77589841
+---------------------------
+
+Restore av_malloc_max(0) to MAX_INT fixing MS Teams, Discord older chromium etc.
+
+Signed-off-by: Joakim Tjernlund <joakim.tjernlund@infinera.com>
+---
+ libavutil/mem.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/libavutil/mem.c b/libavutil/mem.c
+index cfb6d8a..52c2b1b 100644
+--- a/libavutil/mem.c
++++ b/libavutil/mem.c
+@@ -71,6 +71,8 @@ void  free(void *ptr);
+ static size_t max_alloc_size= INT_MAX;
+ 
+ void av_max_alloc(size_t max){
++    if (!max)
++        max = INT_MAX; /* be compatible to older(< 4.3) versions */
+     max_alloc_size = max;
+ }
+ 
+-- 
+2.26.2
+

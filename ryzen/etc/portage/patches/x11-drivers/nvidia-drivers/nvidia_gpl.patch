@@ -1,0 +1,58 @@
+diff -crB a/kernel/nvidia/nv-frontend.c b/kernel/nvidia/nv-frontend.c
+*** a/kernel/nvidia/nv-frontend.c	2020-10-22 08:17:42.000000000 +0200
+--- b/kernel/nvidia/nv-frontend.c	2020-11-19 06:53:08.640135859 +0100
+***************
+*** 15,21 ****
+  #include "nv-frontend.h"
+  
+  #if defined(MODULE_LICENSE)
+! MODULE_LICENSE("NVIDIA");
+  #endif
+  #if defined(MODULE_INFO)
+  MODULE_INFO(supported, "external");
+--- 15,21 ----
+  #include "nv-frontend.h"
+  
+  #if defined(MODULE_LICENSE)
+! MODULE_LICENSE("GPL");
+  #endif
+  #if defined(MODULE_INFO)
+  MODULE_INFO(supported, "external");
+diff -crB a/kernel/nvidia-modeset/nvidia-modeset-linux.c b/kernel/nvidia-modeset/nvidia-modeset-linux.c
+*** a/kernel/nvidia-modeset/nvidia-modeset-linux.c	2020-10-22 08:17:41.000000000 +0200
+--- b/kernel/nvidia-modeset/nvidia-modeset-linux.c	2020-11-19 06:53:37.452571754 +0100
+***************
+*** 1551,1557 ****
+  module_exit(nvkms_exit);
+  
+  #if defined(MODULE_LICENSE)
+!   MODULE_LICENSE("NVIDIA");
+  #endif
+  #if defined(MODULE_INFO)
+    MODULE_INFO(supported, "external");
+--- 1551,1557 ----
+  module_exit(nvkms_exit);
+  
+  #if defined(MODULE_LICENSE)
+!   MODULE_LICENSE("GPL");
+  #endif
+  #if defined(MODULE_INFO)
+    MODULE_INFO(supported, "external");
+diff -crB a/kernel/nvidia-uvm/uvm.c b/kernel/nvidia-uvm/uvm.c
+*** a/kernel/nvidia-uvm/uvm.c	2020-10-22 08:17:41.000000000 +0200
+--- b/kernel/nvidia-uvm/uvm.c	2020-11-19 06:54:12.405139032 +0100
+***************
+*** 1135,1140 ****
+  module_init(uvm_init_entry);
+  module_exit(uvm_exit_entry);
+  
+! MODULE_LICENSE("Dual MIT/GPL");
+  MODULE_INFO(supported, "external");
+  
+--- 1135,1140 ----
+  module_init(uvm_init_entry);
+  module_exit(uvm_exit_entry);
+  
+! MODULE_LICENSE("GPL");
+  MODULE_INFO(supported, "external");
+  
