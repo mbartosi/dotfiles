@@ -46,7 +46,7 @@ label=🖧
 #IFACE=wlan0
 #ADDRESS_FAMILY=inet6?
 color=#00FF00
-interval=10
+interval=20
 
 # CPU usage
 [load_average]
@@ -54,16 +54,32 @@ interval=10
 label=
 
 [cpu_temp]
-label=🌡
+label=🌡CPU: 
+interval=5
+
+[gpu_temp]
+label=🌡GPU: 
 interval=5
 
 [memory]
 label=
 interval=10
 
+[disk_free]
+#command=$SCRIPT_DIR/disk
+label=🖴
+#DIR=$HOME
+#ALERT_LOW=10
+interval=30
+
 # Battery indicator
 #[battery]
+#label=🔋
 #interval=10
+
+#[mouse_battery]
+#label=🖰
+#interval=60
 
 #[nowplaying]
 #label=
@@ -73,6 +89,25 @@ interval=10
 #signal=9
 
 [time]
-label=
+label=🕑
 command=date '+%H:%M %d.%m.%Y  '
 interval=10
+
+#[shutdown_menu]
+#full_text=⏻
+# If you are using FontAwesome, we recommend the power-off icon:
+# http://fontawesome.io/icon/power-off/
+#command=shutdown_menu
+#FG_COLOR=#bbbbbb
+#BG_COLOR=#111111
+#HLFG_COLOR=#111111
+#HLBG_COLOR=#bbbbbb
+#BORDER_COLOR=#222222
+#ROFI_TEXT=Menu:
+#ROFI_OPTIONS=-width 11 -location 3 -hide-scrollbar -bw 2
+#ZENITY_TITLE=Menu
+#ZENITY_TEXT=Action:
+#ZENITY_OPTIONS=--column= --hide-header
+#ENABLE_CONFIRMATIONS=true (must be true or false)
+#LAUNCHER=rofi
+#LOCKSCRIPT=i3lock --color=${BG_COLOR#"#"}

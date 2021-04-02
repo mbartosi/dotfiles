@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #temp="$(cat /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input)"
-[ -f /sys/class/hwmon/hwmon3/temp2_input ] && temp="$(cat /sys/class/hwmon/hwmon3/temp2_input)"
+[ -f /sys/class/hwmon/hwmon0/temp2_input ] && temp="$(cat /sys/class/hwmon/hwmon0/temp2_input)"
 #[ -f /sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input ] && temp="$(cat /sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input)"
 #[ -f /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input ] && temp="$(cat /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input)"
 #[ -f /sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input ] && temp="$(cat /sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input)"

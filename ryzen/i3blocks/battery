@@ -1,0 +1,12 @@
+#!/bin/bash
+##cat /sys/class/power_supply/BAT*/uevent | grep POWER_SUPPLY_CAPACITY= | awk -F'=' '{sum += ($NF)/2} END {print sum"%"}'
+
+BAT0=/sys/class/power_supply/BAT0
+#BAT1=/sys/class/power_supply/BAT1
+BAT0_PERCENT=$(cat $BAT0/uevent | grep POWER_SUPPLY_CAPACITY= | grep -o '[[:digit:]]\+')
+BAT0_TIME=$(acpi | grep remaining | awk '{print$5}')
+#BAT1_PERCENT=$(cat $BAT1/uevent | grep POWER_SUPPLY_CAPACITY= | grep -o '[[:digit:]]\+')
+
+#OUTPUT="$(( ( $BAT0_PERCENT + $BAT1_PERCENT ) / 2 ))% (1: $BAT0_PERCENT% 2: $BAT1_PERCENT%)"
+OUTPUT="$BAT0_PERCENT% ($BAT0_TIME)"
+echo $OUTPUT

@@ -1,9 +1,9 @@
 [Desktop Entry]
 Encoding=UTF-8
 Type=Application
-Name=Compton
+Name=Picom
 Comment=X11 compositor
-Exec=compton -b
+Exec=picom -b
 StartupNotify=false
 Terminal=false
 Hidden=false
